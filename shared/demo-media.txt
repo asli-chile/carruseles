@@ -1,0 +1,12 @@
+ASLI — mismo set de fotos en todos los carruseles (sustituye estos IDs en bloque cuando cambies imágenes).
+
+Orden fijo (1 → 6):
+  1) photo-1586528116311-ad8dd3c8310d  — buque / marítimo
+  2) photo-1494412574643-ff11b0a5c1c3  — puerto
+  3) photo-1578575437130-527eed3abbec  — contenedores
+  4) photo-1580674684081-7617fbf3d745  — camión / terrestre
+  5) photo-1553413077-190dd305871c     — avión / aéreo
+  6) photo-1518684079-c4c9047faddf     — Dubai / skyline
+
+URL base: https://images.unsplash.com/photo-<ID>?w=<ancho>&q=80
+Anchos típicos en el repo: 1920 (fullscreen, skew), 1400 (fade), 800 (stacked, deck-3d), 600 (cards).

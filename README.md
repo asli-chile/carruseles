@@ -67,6 +67,7 @@ Los README de GitHub **no pueden ejecutar JavaScript**: las capturas abajo son e
 
 ```
 /
+├── shared/demo-media.txt      ← mismas URLs de fotos en todos los demos (referencia al cambiar imágenes)
 ├── index.html                 ← índice de todos los demos
 ├── carousel-fullscreen/
 ├── carousel-cards/
