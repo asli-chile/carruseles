@@ -1,5 +1,5 @@
 <!--
-  Perfil: copia todo salvo estas 4 líneas al README.md de
+  Perfil: copia todo salvo estas 7 líneas al README.md de
   https://github.com/asli-chile/asli-chile
   (carpeta github-profile/profile-banner.svg en ese repo)
   Stats: github-readme-stats.vercel.app suele dar 503; usamos mirror shion.dev
