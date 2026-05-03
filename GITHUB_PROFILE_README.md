@@ -1,13 +1,15 @@
 <!--
   Perfil: copia todo salvo estas 7 líneas al README.md de
   https://github.com/asli-chile/asli-chile
-  (banner: URL absoluta raw.githubusercontent — las rutas ./ fallan en vista previa)
+  (banner: PNG vía jsDelivr; SVG en github-profile/profile-banner.svg)
   Stats: github-readme-stats.vercel.app suele dar 503; usamos mirror shion.dev
 -->
 
 <div align="center">
 
-<img src="https://raw.githubusercontent.com/asli-chile/asli-chile/main/github-profile/profile-banner.svg" alt="T.A.P.T. — banner terminal CRT" width="100%" />
+<img src="https://cdn.jsdelivr.net/gh/asli-chile/asli-chile@main/github-profile/profile-banner.png" alt="T.A.P.T. - banner terminal CRT" width="100%" />
+
+<sub>[Versión vectorial (SVG)](https://github.com/asli-chile/asli-chile/blob/main/github-profile/profile-banner.svg?raw=1)</sub>
 
 <br /><br />
 
