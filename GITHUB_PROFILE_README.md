@@ -1,13 +1,13 @@
 <!--
   Perfil: copia todo salvo estas 7 líneas al README.md de
   https://github.com/asli-chile/asli-chile
-  (carpeta github-profile/profile-banner.svg en ese repo)
+  (banner: URL absoluta raw.githubusercontent — las rutas ./ fallan en vista previa)
   Stats: github-readme-stats.vercel.app suele dar 503; usamos mirror shion.dev
 -->
 
 <div align="center">
 
-<img src="./github-profile/profile-banner.svg" alt="T.A.P.T. — banner terminal CRT" width="100%" />
+<img src="https://raw.githubusercontent.com/asli-chile/asli-chile/main/github-profile/profile-banner.svg" alt="T.A.P.T. — banner terminal CRT" width="100%" />
 
 <br /><br />
 
