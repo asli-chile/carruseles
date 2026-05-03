@@ -1,0 +1,245 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --deck-w: min(92vw, 380px);
+  --deck-h: min(78vh, 520px);
+  --card-w: 260px;
+  --card-h: 380px;
+  /* Curva suave: acelera al salir y frena al final sin tirones */
+  --ease-deck: cubic-bezier(0.33, 1, 0.32, 1);
+  --ease-settle: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body {
+  font-family: "Inter", system-ui, sans-serif;
+  background: radial-gradient(ellipse 120% 80% at 50% 20%, #1c2740 0%, #0a0c12 55%);
+  min-height: 100vh;
+  color: #e4e8ef;
+}
+
+.page {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: clamp(1.25rem, 4vw, 2.5rem);
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.eyebrow {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #5b7fd1;
+  margin-bottom: 0.5rem;
+}
+
+.header h1 {
+  font-size: clamp(1.75rem, 4vw, 2.25rem);
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+  background: linear-gradient(125deg, #6eb5ff, #00c4a7);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.lede {
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: #9aa4b5;
+  max-width: 42ch;
+  margin: 0 auto;
+}
+
+.deck-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.deck-viewport {
+  position: relative;
+  width: var(--deck-w);
+  height: var(--deck-h);
+}
+
+/* Escena 3D */
+.deck-stage {
+  position: absolute;
+  inset: 0;
+  perspective: 1400px;
+  perspective-origin: 50% 45%;
+  transform-style: preserve-3d;
+}
+
+.deck-card {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: var(--card-w);
+  height: var(--card-h);
+  margin-left: calc(var(--card-w) / -2);
+  margin-top: calc(var(--card-h) / -2);
+  border-radius: 1.15rem;
+  overflow: hidden;
+  box-shadow:
+    0 4px 6px rgba(0, 0, 0, 0.25),
+    0 24px 48px rgba(0, 0, 0, 0.45),
+    0 0 0 1px rgba(255, 255, 255, 0.06) inset;
+  transform-style: preserve-3d;
+  transform-origin: 50% 90%;
+  transition:
+    transform 0.95s var(--ease-settle),
+    opacity 0.65s var(--ease-settle),
+    filter 0.65s var(--ease-settle);
+  cursor: default;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.deck-card img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+.deck-card__cap {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 0.65rem 1rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #fff;
+  background: linear-gradient(transparent, rgba(5, 10, 20, 0.88));
+  pointer-events: none;
+}
+
+/* —— Posiciones (3 visibles + resto oculto en el fondo) —— */
+
+.deck-card[data-pos="front"] {
+  z-index: 30;
+  transform: translateZ(110px) translateX(0) rotateZ(2.8deg) scale(1);
+  opacity: 1;
+  filter: brightness(1.02);
+}
+
+/* Atrás izquierda */
+.deck-card[data-pos="back-l"] {
+  z-index: 8;
+  transform:
+    translateZ(-52px)
+    translateX(-92px)
+    rotateY(-26deg)
+    rotateZ(-9deg)
+    scale(0.9);
+  opacity: 1;
+  filter: brightness(0.82);
+}
+
+/* Atrás derecha */
+.deck-card[data-pos="back-r"] {
+  z-index: 8;
+  transform:
+    translateZ(-52px)
+    translateX(92px)
+    rotateY(26deg)
+    rotateZ(9deg)
+    scale(0.9);
+  opacity: 1;
+  filter: brightness(0.82);
+}
+
+.deck-card[data-pos="hidden"] {
+  z-index: 0;
+  transform:
+    translateZ(-220px)
+    translateX(0)
+    scale(0.72);
+  opacity: 0;
+  pointer-events: none;
+  transition-duration: 0.75s;
+  transition-timing-function: var(--ease-settle);
+}
+
+/*
+ * Descarte en un solo movimiento: solo 0% → 100%.
+ * El navegador interpola el transform de forma continua; la curva da suavidad al gesto.
+ */
+.deck-card.is-deal-next {
+  animation: dealNext 1s cubic-bezier(0.37, 0, 0.63, 1) forwards;
+  z-index: 40;
+  pointer-events: none;
+}
+
+@keyframes dealNext {
+  0% {
+    transform:
+      translateZ(110px)
+      translateX(0)
+      translateY(0)
+      rotateY(0deg)
+      rotateZ(2.8deg)
+      scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform:
+      translateZ(12px)
+      translateX(128%)
+      translateY(-48%)
+      rotateY(-44deg)
+      rotateZ(31deg)
+      scale(0.76);
+    opacity: 0;
+  }
+}
+
+@media (max-width: 520px) {
+  :root {
+    --card-w: 220px;
+    --card-h: 320px;
+  }
+
+  .deck-card[data-pos="back-l"] {
+    transform:
+      translateZ(-48px)
+      translateX(-68px)
+      rotateY(-22deg)
+      rotateZ(-8deg)
+      scale(0.88);
+  }
+
+  .deck-card[data-pos="back-r"] {
+    transform:
+      translateZ(-48px)
+      translateX(68px)
+      rotateY(22deg)
+      rotateZ(8deg)
+      scale(0.88);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .deck-card {
+    transition-duration: 0.01ms;
+  }
+
+  .deck-card.is-deal-next {
+    animation-duration: 0.01ms;
+  }
+}

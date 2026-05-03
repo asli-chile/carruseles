@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Baraja 3D | ASLI Carousels</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="page">
+    <header class="header">
+      <p class="eyebrow">ASLI Carousels</p>
+      <h1>Baraja 3D</h1>
+      <p class="lede">
+        Tres cartas a la vista: las de atrás inclinadas; la del centro adelante, recta y con un leve giro.
+        El cambio imita sacar una carta del mazo.
+      </p>
+    </header>
+
+    <!-- Captura de referencia en repo: carousel-deck-3d/images/muestra-baraja-3d.png -->
+    <section class="deck-section" aria-roledescription="carrusel">
+      <div class="deck-viewport">
+        <div class="deck-stage" id="deckStage">
+          <!-- Orden inicial: misma idea que la muestra (Dubai al frente, almacenes atrás) -->
+          <article class="deck-card" data-index="0">
+            <img src="https://images.unsplash.com/photo-1518684079-c4c9047faddf?w=800&q=80" alt="Skyline Dubai" width="800" height="1000" loading="eager" decoding="async">
+            <div class="deck-card__cap">Distribución terrestre</div>
+          </article>
+          <article class="deck-card" data-index="1">
+            <img src="https://images.unsplash.com/photo-1566576729-60fd0f35b360?w=800&q=80" alt="Almacén industrial" width="800" height="1000" loading="lazy" decoding="async">
+            <div class="deck-card__cap">Carga consolidada</div>
+          </article>
+          <article class="deck-card" data-index="2">
+            <img src="https://images.unsplash.com/photo-1580674684081-7617fbf3d745?w=800&q=80" alt="Transporte terrestre" width="800" height="1000" loading="lazy" decoding="async">
+            <div class="deck-card__cap">Última milla</div>
+          </article>
+          <article class="deck-card" data-index="3">
+            <img src="https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3?w=800&q=80" alt="Puerto" width="800" height="1000" loading="lazy" decoding="async">
+            <div class="deck-card__cap">Operación portuaria</div>
+          </article>
+          <article class="deck-card" data-index="4">
+            <img src="https://images.unsplash.com/photo-1553413077-190dd305871c?w=800&q=80" alt="Carga aérea" width="800" height="1000" loading="lazy" decoding="async">
+            <div class="deck-card__cap">Carga aérea</div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script src="carousel.js"></script>
+</body>
+</html>

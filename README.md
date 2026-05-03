@@ -73,6 +73,7 @@ Los README de GitHub **no pueden ejecutar JavaScript**: las capturas abajo son e
 ├── carousel-fade/
 ├── carousel-skew/
 ├── carousel-stacked/
+├── carousel-deck-3d/          ← tres cartas en perspectiva, animación baraja
 ├── carousel-ticker/           ← infinito con CSS, sin JS
 └── docs/                      ← capturas para el README
 ```

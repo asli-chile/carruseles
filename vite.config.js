@@ -1,5 +1,5 @@
 import { defineConfig } from 'vite'
-import { copyFileSync, existsSync, mkdirSync } from 'node:fs'
+import { copyFileSync, cpSync, existsSync, mkdirSync } from 'node:fs'
 import { dirname, join, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
@@ -13,6 +13,7 @@ function copyCarouselScripts() {
     'carousel-fade',
     'carousel-skew',
     'carousel-stacked',
+    'carousel-deck-3d',
   ]
   return {
     name: 'copy-carousel-js',
@@ -25,6 +26,10 @@ function copyCarouselScripts() {
           mkdirSync(dirname(dest), { recursive: true })
           copyFileSync(src, dest)
         }
+      }
+      const deckImages = join(__dirname, 'carousel-deck-3d', 'images')
+      if (existsSync(deckImages)) {
+        cpSync(deckImages, join(outDir, 'carousel-deck-3d', 'images'), { recursive: true })
       }
     },
   }
@@ -46,6 +51,7 @@ export default defineConfig(({ mode }) => ({
         fade: resolve(__dirname, 'carousel-fade/index.html'),
         skew: resolve(__dirname, 'carousel-skew/index.html'),
         stacked: resolve(__dirname, 'carousel-stacked/index.html'),
+        deck3d: resolve(__dirname, 'carousel-deck-3d/index.html'),
         ticker: resolve(__dirname, 'carousel-ticker/index.html'),
       },
     },
