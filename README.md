@@ -2,19 +2,64 @@
 
 Colección de carruseles reutilizables para tus proyectos.
 
-## Vista previa
+## Demo en vivo
 
-Para que la página principal del repositorio en GitHub se vea con una imagen grande arriba del README:
+Los README de GitHub **no pueden ejecutar JavaScript**: las capturas abajo son estáticas. Para probar los componentes con interacción, usa la demo publicada o en local.
 
-1. Abre `npm run dev`, entra al índice de demos y haz una **captura de pantalla** o un **GIF** (ShareX, ScreenToGif, etc.).
-2. Guarda el archivo como `docs/preview.png` (o `.gif`) en este repo.
-3. Descomenta o añade en este README, justo debajo de este bloque, una línea como:
+| | |
+| --- | --- |
+| **Producción (GitHub Pages)** | [Abrir demo](https://asli-chile.github.io/carruseles/) — misma app que con `npm run dev` |
+| **En tu PC** | `npm install` y `npm run dev` |
 
-```markdown
-![Vista previa de los carruseles](docs/preview.png)
-```
+**Activar Pages (una vez):** en el repo → *Settings* → *Pages* → *Build and deployment* → *Source* → **GitHub Actions**. El workflow [`.github/workflows/pages.yml`](.github/workflows/pages.yml) genera el sitio al hacer push a `main`.
 
-**Tarjeta al compartir el enlace** (Twitter, Slack, LinkedIn): en GitHub ve a **Settings → General → Social preview** del repo [asli-chile/carruseles](https://github.com/asli-chile/carruseles) y sube una imagen horizontal (~1280×640 px recomendado). Esa imagen no sustituye el README, pero hace que el enlace del repo luzca bien fuera de GitHub.
+**Tarjeta al compartir el enlace del repo:** *Settings* → *General* → *Social preview* y sube una imagen ancha (~1280×640 px). Complementa, no reemplaza, el README.
+
+---
+
+## Vista previa (capturas)
+
+Índice de demos y variantes. Cada título enlaza al código en el repo; en la demo en línea, abre el mismo path bajo `carruseles/`.
+
+### Menú de demos
+
+[![Menú ASLI Carousels](docs/preview-index.png)](https://asli-chile.github.io/carruseles/)
+
+### Fullscreen
+
+[📁 `carousel-fullscreen/`](carousel-fullscreen/) · [Demo](https://asli-chile.github.io/carruseles/carousel-fullscreen/index.html)
+
+![Fullscreen](docs/preview-fullscreen.png)
+
+### Cards
+
+[📁 `carousel-cards/`](carousel-cards/) · [Demo](https://asli-chile.github.io/carruseles/carousel-cards/index.html)
+
+![Cards](docs/preview-cards.png)
+
+### Skew / Accordion
+
+[📁 `carousel-skew/`](carousel-skew/) · [Demo](https://asli-chile.github.io/carruseles/carousel-skew/index.html)
+
+![Skew](docs/preview-skew.png)
+
+### Stacked / Deck
+
+[📁 `carousel-stacked/`](carousel-stacked/) · [Demo](https://asli-chile.github.io/carruseles/carousel-stacked/index.html)
+
+![Stacked](docs/preview-stacked.png)
+
+### Cinta (ticker, solo CSS)
+
+[📁 `carousel-ticker/`](carousel-ticker/) · [Demo](https://asli-chile.github.io/carruseles/carousel-ticker/index.html)
+
+![Ticker](docs/preview-ticker.png)
+
+### Fade
+
+[📁 `carousel-fade/`](carousel-fade/) · [Demo](https://asli-chile.github.io/carruseles/carousel-fade/index.html)
+
+*(Sin captura en assets; ábrelo en la demo en vivo o en local.)*
 
 ---
 
@@ -22,9 +67,14 @@ Para que la página principal del repositorio en GitHub se vea con una imagen gr
 
 ```
 /
-├── carousel-fullscreen/   ← Fullscreen con overlay oscuro
-├── carousel-cards/        ← Cards con swipe (múltiples visibles)
-└── carousel-fade/        ← Transición suave con fade
+├── index.html                 ← índice de todos los demos
+├── carousel-fullscreen/
+├── carousel-cards/
+├── carousel-fade/
+├── carousel-skew/
+├── carousel-stacked/
+├── carousel-ticker/           ← infinito con CSS, sin JS
+└── docs/                      ← capturas para el README
 ```
 
 ---

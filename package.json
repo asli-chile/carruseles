@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "Colección de carruseles reutilizables",
   "scripts": {
-    "dev": "vite"
+    "dev": "vite",
+    "build": "vite build --mode gh-pages",
+    "preview": "vite preview --mode gh-pages --host"
   },
   "devDependencies": {
     "vite": "^5.0.0"
