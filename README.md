@@ -78,7 +78,31 @@ Los README de GitHub **no pueden ejecutar JavaScript**: las capturas abajo son e
 ├── carousel-deck-3d/          ← tres cartas en perspectiva, animación baraja
 ├── carousel-ticker/           ← infinito con CSS, sin JS
 └── docs/                      ← capturas para el README
+└── githooks/                  ← hook opcional: quita co-autor Cursor del mensaje de commit
 ```
+
+### GitHub: que no aparezca «Cursor» en contribuidores
+
+GitHub cuenta como contribuidor a quien salga en **`Co-authored-by:`** del mensaje de commit. Cursor añade por defecto:
+
+`Co-authored-by: Cursor <cursoragent@cursor.com>`
+
+**1. Desactivarlo en Cursor (recomendado)**  
+*Cursor Settings* (no las de VS Code) → **Agents** → **Attribution** → desactiva **Commit attribution** (y *PR attribution* si no lo quieres en PRs). Reinicia Cursor si sigue apareciendo.
+
+**2. CLI de Cursor**  
+En `~/.cursor/cli-config.json` pon `"commitAttribution": false` (y `prAttribution` si aplica). Documentación: [Git | Cursor](https://cursor.com/docs/integrations/git).
+
+**3. Hook en este repo (opcional)**  
+Tras clonar o en esta copia del proyecto:
+
+```bash
+git config core.hooksPath githooks
+```
+
+El script `githooks/prepare-commit-msg` borra la línea de co-autor antes de cerrar el commit (requiere Git con `sh`, p. ej. Git Bash en Windows).
+
+Los commits **ya subidos** con esa línea seguirán en el historial; solo los **nuevos** dejarán de sumar a Cursor. Quitar a Cursor del gráfico por completo implicaría reescribir historial (`rebase`/`filter-repo`) y un `push --force`: solo si lo necesitáis en equipo.
 
 ---
 

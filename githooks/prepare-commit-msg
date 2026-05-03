@@ -1,0 +1,7 @@
+#!/bin/sh
+# Quita el trailer de Cursor para que no cuente como co-contribuidor en GitHub.
+# Activa en este repo: git config core.hooksPath githooks
+f="${1:-}"
+[ -n "$f" ] && [ -f "$f" ] || exit 0
+tmp="${f}.tmp.$$"
+grep -vF "Co-authored-by: Cursor <cursoragent@cursor.com>" "$f" > "$tmp" && mv "$tmp" "$f"
