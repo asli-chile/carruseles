@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carousel de Cards | ASLI</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <div class="asli-carousel-shell">
+    <header class="asli-carousel-shell-header">
+      <h1>Servicios logísticos</h1>
+      <p>Desliza o usa las flechas: al llegar al final vuelve al inicio. En táctil, desliza el carrusel.</p>
+    </header>
+
+    <div
+      class="asli-carousel"
+      id="cardsCarousel"
+      data-per-view="3"
+      data-gap="20"
+      data-autoplay="0"
+      tabindex="0"
+      aria-roledescription="carrusel"
+      aria-label="Tarjetas de servicios"
+    >
+      <div class="asli-carousel-viewport">
+        <div class="asli-carousel-track">
+          <article class="asli-carousel-card" tabindex="0">
+            <div class="card-image">
+              <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=600&q=80" alt="" loading="lazy" decoding="async">
+              <div class="card-badge" aria-hidden="true">
+                <span>🚢</span>
+                Marítimo
+              </div>
+            </div>
+            <div class="asli-carousel-card-content">
+              <h4>Flota Internacional</h4>
+              <p>Cobertura global con rutas optimizadas</p>
+              <div class="card-footer">
+                <span class="card-link">Ver más</span>
+                <span class="card-arrow" aria-hidden="true">→</span>
+              </div>
+            </div>
+          </article>
+          <article class="asli-carousel-card" tabindex="0">
+            <div class="card-image">
+              <img src="https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3?w=600&q=80" alt="" loading="lazy" decoding="async">
+              <div class="card-badge" aria-hidden="true">
+                <span>⚓</span>
+                Portuario
+              </div>
+            </div>
+            <div class="asli-carousel-card-content">
+              <h4>Operación Portuaria</h4>
+              <p>Gestión integral de carga y descarga</p>
+              <div class="card-footer">
+                <span class="card-link">Ver más</span>
+                <span class="card-arrow" aria-hidden="true">→</span>
+              </div>
+            </div>
+          </article>
+          <article class="asli-carousel-card" tabindex="0">
+            <div class="card-image">
+              <img src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?w=600&q=80" alt="" loading="lazy" decoding="async">
+              <div class="card-badge" aria-hidden="true">
+                <span>📦</span>
+                Almacenamiento
+              </div>
+            </div>
+            <div class="asli-carousel-card-content">
+              <h4>Terminales Dedicados</h4>
+              <p>Infraestructura especializada</p>
+              <div class="card-footer">
+                <span class="card-link">Ver más</span>
+                <span class="card-arrow" aria-hidden="true">→</span>
+              </div>
+            </div>
+          </article>
+          <article class="asli-carousel-card" tabindex="0">
+            <div class="card-image">
+              <img src="https://images.unsplash.com/photo-1580674684081-7617fbf3d745?w=600&q=80" alt="" loading="lazy" decoding="async">
+              <div class="card-badge" aria-hidden="true">
+                <span>🚛</span>
+                Terrestre
+              </div>
+            </div>
+            <div class="asli-carousel-card-content">
+              <h4>Distribución Terrestre</h4>
+              <p>Entrega puerta a puerta</p>
+              <div class="card-footer">
+                <span class="card-link">Ver más</span>
+                <span class="card-arrow" aria-hidden="true">→</span>
+              </div>
+            </div>
+          </article>
+          <article class="asli-carousel-card" tabindex="0">
+            <div class="card-image">
+              <img src="https://images.unsplash.com/photo-1553413077-190dd305871c?w=600&q=80" alt="" loading="lazy" decoding="async">
+              <div class="card-badge" aria-hidden="true">
+                <span>✈️</span>
+                Aéreo
+              </div>
+            </div>
+            <div class="asli-carousel-card-content">
+              <h4>Carga Aérea Express</h4>
+              <p>Envíos urgentes y sensibles</p>
+              <div class="card-footer">
+                <span class="card-link">Ver más</span>
+                <span class="card-arrow" aria-hidden="true">→</span>
+              </div>
+            </div>
+          </article>
+          <article class="asli-carousel-card" tabindex="0">
+            <div class="card-image">
+              <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=600&q=80" alt="" loading="lazy" decoding="async">
+              <div class="card-badge" aria-hidden="true">
+                <span>🏭</span>
+                Logística
+              </div>
+            </div>
+            <div class="asli-carousel-card-content">
+              <h4>Logística Integral</h4>
+              <p>Soluciones de extremo a extremo</p>
+              <div class="card-footer">
+                <span class="card-link">Ver más</span>
+                <span class="card-arrow" aria-hidden="true">→</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <button type="button" class="asli-carousel-btn prev" aria-label="Anterior">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><polyline points="15 18 9 12 15 6"></polyline></svg>
+      </button>
+      <button type="button" class="asli-carousel-btn next" aria-label="Siguiente">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg>
+      </button>
+
+      <div class="asli-carousel-meta">
+        <div class="asli-carousel-dots" role="tablist" aria-label="Posición en el carrusel"></div>
+        <p class="asli-carousel-hint">Desliza con el dedo para cambiar de grupo</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="carousel.js"></script>
+  <script>
+    ASLIcarousel.init();
+  </script>
+</body>
+</html>

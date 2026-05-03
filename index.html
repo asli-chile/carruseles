@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ASLI Carousels - Demo</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: "Inter", system-ui, sans-serif;
+      background: linear-gradient(135deg, #f0f5ff 0%, #e8f0ff 100%);
+      min-height: 100vh;
+      padding: 3rem 2rem;
+    }
+    
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    
+    h1 {
+      text-align: center;
+      color: #13233a;
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .subtitle {
+      text-align: center;
+      color: #5a6a85;
+      margin-bottom: 3rem;
+    }
+    
+    .carousels {
+      display: grid;
+      gap: 1.5rem;
+    }
+    
+    .carousel-item {
+      background: #fff;
+      border-radius: 16px;
+      padding: 1.5rem;
+      box-shadow: 0 4px 20px rgba(10, 31, 68, 0.08);
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      text-decoration: none;
+      color: inherit;
+      transition: all 0.3s ease;
+    }
+    
+    .carousel-item:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(10, 31, 68, 0.12);
+    }
+    
+    .carousel-icon {
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(135deg, #0056d8, #003e9b);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    
+    .carousel-icon svg {
+      width: 28px;
+      height: 28px;
+      color: #fff;
+    }
+    
+    .carousel-info h2 {
+      font-size: 1.2rem;
+      color: #13233a;
+      margin-bottom: 0.35rem;
+    }
+    
+    .carousel-info p {
+      color: #5a6a85;
+      font-size: 0.9rem;
+    }
+    
+    .arrow {
+      margin-left: auto;
+      color: #0056d8;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🎠 ASLI Carousels</h1>
+    <p class="subtitle">Selecciona un carrusel para ver el demo</p>
+    
+    <div class="carousels">
+      <a href="carousel-fullscreen/index.html" class="carousel-item">
+        <div class="carousel-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="2" y="3" width="20" height="14" rx="2"/>
+            <line x1="8" y1="21" x2="16" y2="21"/>
+            <line x1="12" y1="17" x2="12" y2="21"/>
+          </svg>
+        </div>
+        <div class="carousel-info">
+          <h2>Fullscreen</h2>
+          <p>100vh con overlay oscuro, ideal para heroes de landing pages</p>
+        </div>
+        <span class="arrow">→</span>
+      </a>
+      
+      <a href="carousel-cards/index.html" class="carousel-item">
+        <div class="carousel-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="3" width="7" height="7"/>
+            <rect x="14" y="3" width="7" height="7"/>
+            <rect x="14" y="14" width="7" height="7"/>
+            <rect x="3" y="14" width="7" height="7"/>
+          </svg>
+        </div>
+        <div class="carousel-info">
+          <h2>Cards</h2>
+          <p>Múltiples cards visibles con swipe táctil, perfecto para galerías</p>
+        </div>
+        <span class="arrow">→</span>
+      </a>
+      
+      <a href="carousel-fade/index.html" class="carousel-item">
+        <div class="carousel-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/>
+            <line x1="12" y1="8" x2="12" y2="16"/>
+            <line x1="8" y1="12" x2="16" y2="12"/>
+          </svg>
+        </div>
+        <div class="carousel-info">
+          <h2>Fade</h2>
+          <p>Transición suave con desvanecimiento, para presentaciones</p>
+        </div>
+        <span class="arrow">→</span>
+      </a>
+      
+      <a href="carousel-skew/index.html" class="carousel-item">
+        <div class="carousel-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polygon points="5 3 19 12 5 21 5 3"/>
+          </svg>
+        </div>
+        <div class="carousel-info">
+          <h2>Skew / Accordion</h2>
+          <p>Efeito visual con inclinación, card activo se expande</p>
+        </div>
+        <span class="arrow">→</span>
+      </a>
+      
+      <a href="carousel-stacked/index.html" class="carousel-item">
+        <div class="carousel-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="2" y="6" width="20" height="12" rx="2"/>
+            <path d="M2 10h20"/>
+          </svg>
+        </div>
+        <div class="carousel-info">
+          <h2>Stacked / Deck</h2>
+          <p>Cards apilados con animación 3D al rotar</p>
+        </div>
+        <span class="arrow">→</span>
+      </a>
+      
+      <a href="carousel-ticker/index.html" class="carousel-item">
+        <div class="carousel-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M4 12h16"/>
+            <polyline points="15 6 21 12 15 18"/>
+            <polyline points="9 6 3 12 9 18"/>
+          </svg>
+        </div>
+        <div class="carousel-info">
+          <h2>Cinta (ticker)</h2>
+          <p>Scroll horizontal infinito; pausa al hover; sin JavaScript</p>
+        </div>
+        <span class="arrow">→</span>
+      </a>
+    </div>
+  </div>
+</body>
+</html>

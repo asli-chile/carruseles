@@ -1,0 +1,176 @@
+/* ASLI — Carrusel cinta (ticker infinito) */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --tk-bg: #0a0e18;
+  --tk-surface: rgba(255, 255, 255, 0.06);
+  --tk-border: rgba(255, 255, 255, 0.1);
+  --tk-text: #e8ecf8;
+  --tk-muted: rgba(232, 236, 248, 0.55);
+  --tk-accent: #5b8cff;
+  --tk-speed: 45s;
+}
+
+body {
+  font-family: "DM Sans", system-ui, -apple-system, sans-serif;
+  min-height: 100vh;
+  color: var(--tk-text);
+  background: var(--tk-bg);
+  background-image:
+    radial-gradient(ellipse 80% 50% at 50% -20%, rgba(91, 140, 255, 0.2), transparent 50%),
+    linear-gradient(180deg, #0d1220 0%, var(--tk-bg) 100%);
+  padding: clamp(1.5rem, 4vw, 3rem) 0;
+}
+
+.tk-shell {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 clamp(1rem, 3vw, 1.5rem);
+}
+
+.tk-header {
+  text-align: center;
+  margin-bottom: clamp(1.5rem, 4vw, 2.5rem);
+}
+
+.tk-header h1 {
+  font-size: clamp(1.25rem, 3vw, 1.65rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  margin-bottom: 0.4rem;
+}
+
+.tk-header p {
+  font-size: 0.9rem;
+  color: var(--tk-muted);
+  max-width: 42ch;
+  margin-inline: auto;
+  line-height: 1.5;
+}
+
+/* Máscara suave en los bordes */
+.asli-ticker-wrap {
+  position: relative;
+  border-radius: 16px;
+  border: 1px solid var(--tk-border);
+  background: var(--tk-surface);
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.35);
+  overflow: hidden;
+}
+
+.asli-ticker-wrap::before,
+.asli-ticker-wrap::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: clamp(48px, 12vw, 88px);
+  z-index: 2;
+  pointer-events: none;
+}
+
+.asli-ticker-wrap::before {
+  left: 0;
+  background: linear-gradient(90deg, var(--tk-bg) 0%, transparent 100%);
+}
+
+.asli-ticker-wrap::after {
+  right: 0;
+  background: linear-gradient(270deg, var(--tk-bg) 0%, transparent 100%);
+}
+
+.asli-ticker {
+  overflow: hidden;
+  padding-block: 1.25rem;
+}
+
+.asli-ticker-track {
+  display: flex;
+  width: max-content;
+  animation: asli-ticker-scroll var(--tk-speed) linear infinite;
+}
+
+.asli-ticker:hover .asli-ticker-track {
+  animation-play-state: paused;
+}
+
+@keyframes asli-ticker-scroll {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.asli-ticker-group {
+  display: flex;
+  align-items: stretch;
+  gap: 1rem;
+  padding-inline: 0.5rem;
+  flex-shrink: 0;
+}
+
+.asli-ticker-item {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.65rem 1.15rem;
+  border-radius: 12px;
+  border: 1px solid var(--tk-border);
+  background: rgba(255, 255, 255, 0.04);
+  font-size: 0.88rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  transition: border-color 0.25s ease, background 0.25s ease;
+}
+
+.asli-ticker-item:hover {
+  border-color: rgba(91, 140, 255, 0.45);
+  background: rgba(91, 140, 255, 0.1);
+}
+
+.asli-ticker-item-icon {
+  font-size: 1.15rem;
+  line-height: 1;
+}
+
+.asli-ticker-note {
+  margin-top: 1rem;
+  text-align: center;
+  font-size: 0.78rem;
+  color: var(--tk-muted);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .asli-ticker-wrap::before,
+  .asli-ticker-wrap::after {
+    display: none;
+  }
+
+  .asli-ticker-group[aria-hidden="true"] {
+    display: none;
+  }
+
+  .asli-ticker-track {
+    animation: none;
+    transform: none;
+    width: 100% !important;
+    max-width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem 1rem;
+  }
+
+  .asli-ticker-group {
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-inline: 0;
+  }
+}

@@ -1,0 +1,436 @@
+/* ASLI Carousel — fluido, moderno, intuitivo */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --cc-bg-0: #070a12;
+  --cc-bg-1: #0d1324;
+  --cc-surface: rgba(255, 255, 255, 0.06);
+  --cc-surface-strong: rgba(255, 255, 255, 0.1);
+  --cc-border: rgba(255, 255, 255, 0.12);
+  --cc-text: #f4f6fb;
+  --cc-muted: rgba(228, 232, 245, 0.72);
+  --cc-accent: #5b8cff;
+  --cc-accent-2: #2ee6c7;
+  --cc-radius: clamp(18px, 2.5vw, 26px);
+  --cc-gap: var(--carousel-gap, 20px);
+  --cc-ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --cc-ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+  min-height: 100vh;
+  color: var(--cc-text);
+  background-color: var(--cc-bg-0);
+  background-image:
+    radial-gradient(ellipse 100% 80% at 15% -10%, rgba(91, 140, 255, 0.35), transparent 50%),
+    radial-gradient(ellipse 90% 70% at 95% 30%, rgba(46, 230, 199, 0.18), transparent 45%),
+    radial-gradient(ellipse 60% 50% at 50% 100%, rgba(91, 140, 255, 0.12), transparent 55%),
+    linear-gradient(165deg, var(--cc-bg-1) 0%, var(--cc-bg-0) 55%, #05060d 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(1.5rem, 4vw, 3rem) clamp(1rem, 3vw, 2rem);
+}
+
+/* --- Shell --- */
+.asli-carousel-shell {
+  width: min(1180px, 100%);
+}
+
+.asli-carousel-shell-header {
+  text-align: center;
+  margin-bottom: clamp(1.25rem, 3vw, 2rem);
+}
+
+.asli-carousel-shell-header h1 {
+  font-size: clamp(1.35rem, 3.5vw, 1.85rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+  margin-bottom: 0.35rem;
+}
+
+.asli-carousel-shell-header p {
+  font-size: clamp(0.85rem, 2vw, 0.95rem);
+  color: var(--cc-muted);
+  font-weight: 500;
+  max-width: 36ch;
+  margin-inline: auto;
+}
+
+/* --- Carousel --- */
+.asli-carousel {
+  --carousel-gap: 20px;
+  position: relative;
+  width: 100%;
+  padding-inline: clamp(2.75rem, 8vw, 4.25rem);
+  outline: none;
+}
+
+.asli-carousel:focus-visible {
+  border-radius: 12px;
+  box-shadow: 0 0 0 3px rgba(91, 140, 255, 0.45);
+}
+
+.asli-carousel-viewport {
+  overflow: hidden;
+  border-radius: var(--cc-radius);
+  margin-inline: auto;
+}
+
+.asli-carousel-track {
+  display: flex;
+  gap: var(--cc-gap);
+  transition: transform 0.75s var(--cc-ease-out);
+  will-change: transform;
+}
+
+/* Touch: momentum feel — mismo easing largo */
+@media (hover: hover) and (pointer: fine) {
+  .asli-carousel-track {
+    transition-duration: 0.65s;
+  }
+}
+
+/* --- Cards --- */
+.asli-carousel-card {
+  flex: 0 0 calc((100% - (var(--cc-gap) * 2)) / 3);
+  min-width: min(100%, 260px);
+  position: relative;
+  border-radius: var(--cc-radius);
+  overflow: hidden;
+  cursor: pointer;
+  background: var(--cc-surface);
+  border: 1px solid var(--cc-border);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.04) inset,
+    0 24px 48px rgba(0, 0, 0, 0.35);
+  transition:
+    transform 0.5s var(--cc-ease-out),
+    box-shadow 0.5s ease,
+    border-color 0.4s ease;
+}
+
+.asli-carousel-card:focus-visible {
+  outline: 2px solid var(--cc-accent);
+  outline-offset: 3px;
+}
+
+.asli-carousel-card:hover {
+  transform: translateY(-6px) scale(1.015);
+  border-color: rgba(91, 140, 255, 0.35);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.06) inset,
+    0 32px 64px rgba(0, 0, 0, 0.45),
+    0 0 80px rgba(91, 140, 255, 0.12);
+}
+
+.card-image {
+  position: relative;
+  aspect-ratio: 5 / 4;
+  overflow: hidden;
+}
+
+.card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.001);
+  transition: transform 0.85s var(--cc-ease-out);
+}
+
+.asli-carousel-card:hover .card-image img {
+  transform: scale(1.07);
+}
+
+.card-image::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(5, 8, 18, 0.15) 45%,
+    rgba(5, 8, 18, 0.82) 100%
+  );
+  pointer-events: none;
+}
+
+.card-badge {
+  position: absolute;
+  top: clamp(10px, 2vw, 14px);
+  left: clamp(10px, 2vw, 14px);
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35rem 0.75rem 0.35rem 0.4rem;
+  font-size: clamp(0.68rem, 1.5vw, 0.78rem);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--cc-text);
+  background: rgba(7, 10, 18, 0.55);
+  backdrop-filter: blur(12px) saturate(1.3);
+  -webkit-backdrop-filter: blur(12px) saturate(1.3);
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.card-badge span {
+  display: grid;
+  place-items: center;
+  width: 1.85rem;
+  height: 1.85rem;
+  font-size: 1rem;
+  border-radius: 50%;
+  background: linear-gradient(145deg, rgba(91, 140, 255, 0.35), rgba(46, 230, 199, 0.2));
+}
+
+.asli-carousel-card-content {
+  position: relative;
+  z-index: 1;
+  padding: clamp(1rem, 2.5vw, 1.25rem) clamp(1rem, 2.5vw, 1.35rem) clamp(1.1rem, 2.5vw, 1.35rem);
+  margin-top: -3.25rem;
+  border-radius: var(--cc-radius) var(--cc-radius) 0 0;
+  background: linear-gradient(180deg, rgba(13, 19, 36, 0.55) 0%, rgba(7, 10, 18, 0.92) 38%, #0a0e18 100%);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.asli-carousel-card-content h4 {
+  font-size: clamp(1rem, 2.2vw, 1.15rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+  margin-bottom: 0.35rem;
+}
+
+.asli-carousel-card-content p {
+  font-size: clamp(0.8rem, 1.8vw, 0.88rem);
+  color: var(--cc-muted);
+  line-height: 1.55;
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+
+.card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.card-link {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--cc-accent);
+  letter-spacing: 0.02em;
+  transition: color 0.3s ease, transform 0.35s var(--cc-ease-spring);
+}
+
+.card-arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 50%;
+  font-size: 1.1rem;
+  line-height: 1;
+  color: var(--cc-bg-0);
+  background: linear-gradient(135deg, var(--cc-accent), #7aa3ff);
+  box-shadow: 0 4px 20px rgba(91, 140, 255, 0.35);
+  transition: transform 0.45s var(--cc-ease-spring), box-shadow 0.4s ease;
+}
+
+.asli-carousel-card:hover .card-link {
+  color: #9eb9ff;
+}
+
+.asli-carousel-card:hover .card-arrow {
+  transform: translateX(4px);
+  box-shadow: 0 6px 28px rgba(91, 140, 255, 0.5);
+}
+
+/* --- Nav buttons --- */
+.asli-carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  width: clamp(44px, 10vw, 52px);
+  height: clamp(44px, 10vw, 52px);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--cc-text);
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--cc-border);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  transition:
+    transform 0.35s var(--cc-ease-spring),
+    background 0.35s ease,
+    opacity 0.35s ease,
+    border-color 0.35s ease;
+}
+
+.asli-carousel-btn:hover:not(:disabled) {
+  background: rgba(91, 140, 255, 0.25);
+  border-color: rgba(91, 140, 255, 0.45);
+  transform: translateY(-50%) scale(1.06);
+}
+
+.asli-carousel-btn:active:not(:disabled) {
+  transform: translateY(-50%) scale(0.96);
+}
+
+.asli-carousel-btn:disabled {
+  opacity: 0.28;
+  cursor: not-allowed;
+}
+
+.asli-carousel-btn svg {
+  width: 22px;
+  height: 22px;
+  stroke-width: 2.25;
+}
+
+.asli-carousel-btn.prev {
+  left: clamp(0.25rem, 2vw, 0.5rem);
+}
+
+.asli-carousel-btn.next {
+  right: clamp(0.25rem, 2vw, 0.5rem);
+}
+
+/* --- Dots & hint --- */
+.asli-carousel-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: clamp(1.25rem, 3vw, 1.75rem);
+}
+
+.asli-carousel-dots {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.45rem;
+}
+
+.asli-carousel-dot {
+  width: 8px;
+  height: 8px;
+  padding: 0;
+  border: none;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.22);
+  cursor: pointer;
+  transition:
+    width 0.45s var(--cc-ease-out),
+    background 0.35s ease,
+    opacity 0.35s ease;
+}
+
+.asli-carousel-dot:hover {
+  background: rgba(255, 255, 255, 0.45);
+}
+
+.asli-carousel-dot[aria-current="true"] {
+  width: 26px;
+  background: linear-gradient(90deg, var(--cc-accent), var(--cc-accent-2));
+  opacity: 1;
+}
+
+.asli-carousel-hint {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: rgba(228, 232, 245, 0.45);
+  letter-spacing: 0.02em;
+}
+
+@media (min-width: 769px) {
+  .asli-carousel-hint {
+    display: none;
+  }
+}
+
+/* --- Responsive --- */
+@media (max-width: 1100px) {
+  .asli-carousel-card {
+    flex: 0 0 calc((100% - var(--cc-gap)) / 2);
+  }
+}
+
+@media (max-width: 800px) {
+  .asli-carousel {
+    padding-inline: clamp(2.25rem, 10vw, 3rem);
+  }
+
+  .asli-carousel-card {
+    flex: 0 0 min(85%, 320px);
+  }
+
+  .asli-carousel-track {
+    transition-duration: 0.55s;
+  }
+}
+
+@media (max-width: 500px) {
+  .asli-carousel-card {
+    flex: 0 0 calc(100% - 2.5rem);
+    min-width: 0;
+  }
+
+  .asli-carousel-btn.prev {
+    left: 0;
+  }
+
+  .asli-carousel-btn.next {
+    right: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .asli-carousel-track,
+  .asli-carousel-card,
+  .card-image img,
+  .card-arrow,
+  .asli-carousel-btn,
+  .asli-carousel-dot {
+    transition-duration: 0.01ms !important;
+  }
+
+  .asli-carousel-card:hover {
+    transform: none;
+  }
+
+  .asli-carousel-card:hover .card-image img {
+    transform: none;
+  }
+
+  .asli-carousel-card:hover .card-arrow {
+    transform: none;
+  }
+}

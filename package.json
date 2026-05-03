@@ -1,0 +1,11 @@
+{
+  "name": "asli-carousels",
+  "version": "1.0.0",
+  "description": "Colección de carruseles reutilizables",
+  "scripts": {
+    "dev": "vite"
+  },
+  "devDependencies": {
+    "vite": "^5.0.0"
+  }
+}

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carousel Fade</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <div class="asli-carousel" id="fadeCarousel" data-autoplay="4000" data-effect="fade">
+    <div class="asli-carousel-track">
+      <div class="asli-carousel-slide active">
+        <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=1400&q=80" alt="Imagen 1">
+        <div class="asli-carousel-overlay">
+          <div class="asli-carousel-content">
+            <h3>Primera Imagen</h3>
+            <p>Descripción con efecto fade suave</p>
+          </div>
+        </div>
+      </div>
+      <div class="asli-carousel-slide">
+        <img src="https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3?w=1400&q=80" alt="Imagen 2">
+        <div class="asli-carousel-overlay">
+          <div class="asli-carousel-content">
+            <h3>Segunda Imagen</h3>
+            <p>Descripción con efecto fade suave</p>
+          </div>
+        </div>
+      </div>
+      <div class="asli-carousel-slide">
+        <img src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?w=1400&q=80" alt="Imagen 3">
+        <div class="asli-carousel-overlay">
+          <div class="asli-carousel-content">
+            <h3>Tercera Imagen</h3>
+            <p>Descripción con efecto fade suave</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <button class="asli-carousel-btn prev" aria-label="Anterior">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg>
+    </button>
+    <button class="asli-carousel-btn next" aria-label="Siguiente">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+    </button>
+    
+    <div class="asli-carousel-dots"></div>
+  </div>
+
+  <script src="carousel.js"></script>
+  <script>
+    ASLIcarousel.init();
+  </script>
+</body>
+</html>
