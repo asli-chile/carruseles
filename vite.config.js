@@ -14,6 +14,7 @@ function copyCarouselScripts() {
     'carousel-skew',
     'carousel-stacked',
     'carousel-deck-3d',
+    'carousel-social-feed',
   ]
   return {
     name: 'copy-carousel-js',
@@ -52,6 +53,7 @@ export default defineConfig(({ mode }) => ({
         skew: resolve(__dirname, 'carousel-skew/index.html'),
         stacked: resolve(__dirname, 'carousel-stacked/index.html'),
         deck3d: resolve(__dirname, 'carousel-deck-3d/index.html'),
+        social: resolve(__dirname, 'carousel-social-feed/index.html'),
         ticker: resolve(__dirname, 'carousel-ticker/index.html'),
       },
     },

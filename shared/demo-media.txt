@@ -9,4 +9,4 @@ Orden fijo (1 → 6):
   6) photo-1518684079-c4c9047faddf     — Dubai / skyline
 
 URL base: https://images.unsplash.com/photo-<ID>?w=<ancho>&q=80
-Anchos típicos en el repo: 1920 (fullscreen, skew), 1400 (fade), 800 (stacked, deck-3d), 600 (cards).
+Anchos típicos en el repo: 1920 (fullscreen, skew), 1400 (fade), 800 (stacked, deck-3d), 640 (social-feed), 600 (cards).

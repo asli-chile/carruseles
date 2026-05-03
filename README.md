@@ -71,6 +71,7 @@ Los README de GitHub **no pueden ejecutar JavaScript**: las capturas abajo son e
 ├── index.html                 ← índice de todos los demos
 ├── carousel-fullscreen/
 ├── carousel-cards/
+├── carousel-social-feed/      ← publicaciones tipo Instagram / feed
 ├── carousel-fade/
 ├── carousel-skew/
 ├── carousel-stacked/

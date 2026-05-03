@@ -1,0 +1,322 @@
+/* ASLI — carrusel tipo feed de redes (publicación + snippet + media) */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --sf-bg: #0c0c0e;
+  --sf-surface: #161618;
+  --sf-border: rgba(255, 255, 255, 0.08);
+  --sf-text: #f5f5f7;
+  --sf-muted: rgba(245, 245, 247, 0.55);
+  --sf-accent: #e1306c;
+  --sf-blue: #0095f6;
+  --sf-gap: var(--carousel-gap, 16px);
+  --sf-radius: 14px;
+  --sf-ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  min-height: 100vh;
+  color: var(--sf-text);
+  background: var(--sf-bg);
+  background-image:
+    radial-gradient(ellipse 80% 50% at 50% -20%, rgba(225, 48, 108, 0.12), transparent),
+    radial-gradient(ellipse 60% 40% at 100% 50%, rgba(0, 149, 246, 0.08), transparent);
+  padding: clamp(1.25rem, 4vw, 2.5rem) clamp(0.75rem, 3vw, 1.5rem);
+}
+
+.sf-shell {
+  width: min(520px, 100%);
+  margin: 0 auto;
+}
+
+.sf-header {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.sf-header .eyebrow {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--sf-muted);
+  margin-bottom: 0.4rem;
+}
+
+.sf-header h1 {
+  font-size: clamp(1.35rem, 4vw, 1.65rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.35rem;
+}
+
+.sf-header p {
+  font-size: 0.88rem;
+  color: var(--sf-muted);
+  line-height: 1.45;
+  max-width: 38ch;
+  margin-inline: auto;
+}
+
+/* —— Carrusel (misma API que cards) —— */
+.asli-carousel {
+  --carousel-gap: 16px;
+  position: relative;
+  width: 100%;
+  padding-inline: clamp(2.5rem, 7vw, 3.5rem);
+  outline: none;
+}
+
+.asli-carousel:focus-visible {
+  border-radius: 12px;
+  box-shadow: 0 0 0 2px rgba(0, 149, 246, 0.45);
+}
+
+.asli-carousel-viewport {
+  overflow: hidden;
+  border-radius: calc(var(--sf-radius) + 4px);
+  margin-inline: auto;
+}
+
+.asli-carousel-track {
+  display: flex;
+  gap: var(--sf-gap);
+  transition: transform 0.7s var(--sf-ease);
+  will-change: transform;
+}
+
+/* Una “tarjeta app” por slide (ancho fijo tipo móvil) */
+.asli-carousel-card {
+  flex: 0 0 min(340px, calc(100vw - 5.5rem));
+  max-width: 360px;
+  background: var(--sf-surface);
+  border: 1px solid var(--sf-border);
+  border-radius: var(--sf-radius);
+  overflow: hidden;
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.03) inset,
+    0 20px 50px rgba(0, 0, 0, 0.45);
+}
+
+/* Cabecera post */
+.sp-head {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.75rem 0.85rem;
+  border-bottom: 1px solid var(--sf-border);
+}
+
+.sp-avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #0056d8, #00c4a7);
+  display: grid;
+  place-items: center;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.sp-meta {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.25rem 0.35rem;
+  font-size: 0.8rem;
+}
+
+.sp-user {
+  font-weight: 600;
+  color: var(--sf-text);
+}
+
+.sp-user::before {
+  content: "@";
+  font-weight: 500;
+  opacity: 0.85;
+}
+
+.sp-dot,
+.sp-time {
+  color: var(--sf-muted);
+  font-weight: 400;
+}
+
+.sp-more {
+  margin-left: auto;
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--sf-muted);
+  font-size: 1.1rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.sp-more:hover {
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--sf-text);
+}
+
+/* Texto tipo caption */
+.sp-text {
+  padding: 0.65rem 0.85rem 0.5rem;
+  font-size: 0.84rem;
+  line-height: 1.45;
+  color: rgba(245, 245, 247, 0.92);
+}
+
+.sp-text .sp-hashtag {
+  color: #7ab8ff;
+  font-weight: 500;
+}
+
+/* Media */
+.sp-media {
+  aspect-ratio: 1 / 1;
+  background: #000;
+}
+
+.sp-media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Acciones (decorativas) */
+.sp-foot {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.65rem 0.85rem 0.75rem;
+  border-top: 1px solid var(--sf-border);
+}
+
+.sp-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.78rem;
+  color: var(--sf-muted);
+  background: none;
+  border: none;
+  cursor: default;
+  padding: 0;
+}
+
+.sp-action svg {
+  width: 22px;
+  height: 22px;
+  opacity: 0.9;
+}
+
+.sp-action--like svg {
+  stroke: var(--sf-text);
+}
+
+.sp-spacer {
+  flex: 1;
+}
+
+/* Flechas */
+.asli-carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1px solid var(--sf-border);
+  background: rgba(22, 22, 24, 0.92);
+  color: var(--sf-text);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  z-index: 2;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.asli-carousel-btn:hover:not(:disabled) {
+  background: rgba(40, 40, 44, 0.98);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.asli-carousel-btn:disabled {
+  opacity: 0.25;
+  cursor: not-allowed;
+}
+
+.asli-carousel-btn.prev {
+  left: 0.15rem;
+}
+
+.asli-carousel-btn.next {
+  right: 0.15rem;
+}
+
+.asli-carousel-btn svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* Dots estilo stories */
+.asli-carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 0.35rem;
+  margin-top: 1rem;
+  flex-wrap: wrap;
+}
+
+.asli-carousel-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  border: none;
+  padding: 0;
+  background: rgba(255, 255, 255, 0.22);
+  cursor: pointer;
+  transition: transform 0.2s, background 0.2s;
+}
+
+.asli-carousel-dot:hover {
+  background: rgba(255, 255, 255, 0.4);
+}
+
+.asli-carousel-dot[aria-current="true"] {
+  background: linear-gradient(90deg, #f58529, #dd2a7b, #8134af);
+  transform: scale(1.25);
+}
+
+.sf-hint {
+  text-align: center;
+  font-size: 0.75rem;
+  color: var(--sf-muted);
+  margin-top: 1rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .asli-carousel-track {
+    transition-duration: 0.01ms;
+  }
+}
